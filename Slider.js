@@ -9,5 +9,12 @@
   function Slider(options){
     extend(this,options);
   }
+  Slider.prototype.nav=function(index){
+    if(this.index===index)return;
+    this.last=this.index;//'this'增加了一个last属性，存放之前的索引位置
+    this.index=index;
+    this.fade();
+    this.setCurrent();
+  }
   App.Slider=Slider;
 })(window.App);
