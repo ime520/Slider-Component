@@ -17,6 +17,16 @@
     this.imgLength=this.images.length;
     this.init();
   }
+  Slider.prototype.init=function(){
+    this.sliders=this.buildSlider();
+    this.cursors=this.buildCursor();
+    this.arrows=this.buildArrow();
+    this.slider.addEventListener('mouseenter',this.stop.bind(this));
+    this.slider.addEventListener('mouseleave',this.autoPlay.bind(this));
+    this.container.appendChild(this.slider);
+    this.nav(this.InitIndex||0);
+    this.autoPlay();
+  }
   Slider.prototype.nav=function(index){
     if(this.index===index)return;
     this.last=this.index;//this增加了一个last属性，存放之前的索引位置
